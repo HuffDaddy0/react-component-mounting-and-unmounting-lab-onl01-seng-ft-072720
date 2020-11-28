@@ -11,6 +11,14 @@ class Pancake extends React.Component {
   }
 
   // TODO: create a componentDidMount() which will start the interval to count how long the pancake has been cooking
+  componentDidMount(){
+    this.startInterval()
+
+  }
+
+  componentWillUnmount(){
+    this.cleanUpInterval()
+  }
 
   // TODO: create a componentWillUnmount() which will clear the interval
 
@@ -66,7 +74,7 @@ class Pancake extends React.Component {
         <div className="Pancake__content">
           <p>I am a pancake.</p>
           <p>
-            Time cooked on {`${firstSide ? "first" : "second"}`} side:{" "}
+            Time cooked on {`${firstSide ? "first" : "second"}`} side:{this.state.timeCooked}
             {`${firstSide ? timeCooked : timeCooked - flippedAt}`}
           </p>
           <div>
